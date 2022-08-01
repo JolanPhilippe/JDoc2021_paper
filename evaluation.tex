@@ -1,0 +1,50 @@
+\begin{multicols}{2}
+This Section gives an overview of the different strategies we use to implement the query to solve
+the problem presented in Section~\ref{sec:example}. All the technical details can be found in
+\cite{PhilippeCTS2020:MODELS}. First, the naive implementation is based on its OCL specification.
+OCL is a standard for expressing queries, and constraints, on elements of models. It is decomposed
+on several parts: first, all belonging comments of a post are recursively obtained, then all their
+like is count. From these two information, the score of a post is calculated. This function has a
+direct, but inefficient, counterpart. The second implementation, designed on top of Pregel, is based
+on graph theory. Here, each element of the model is considered as a single element. The third
+implementation works on the MapReduce paradigm: every element of the model, without considering its
+type, is associated to a score. To finally obtain a score for a port, these intermediate scores a
+merged into a single value. Finally, we implemented two additional approaches by mixing the one 
+presented above. Some parts of the naive implementation can be optimized using the Pregel strategy.
+Similarly, the MapReduce implementation can be partially replaced by an execution based on the 
+graph theory of the Pregel paradigm. We experiment our five parallel implementation of the TTC18 query
+(Section~\ref{sec:example}). The experiments have been conducted on a shared memory machine with a 
+Intel Core i7-8650U having 8 cores at 1.90GHz and a memory of 32GB. The machine was running Ubuntu
+16.04 LTS. We use Java 8, Scala 2.12 with Spark 3.1.0. Each speed-up on Table~\ref{tab:results} is
+the mean of a series of 30 measures.
+\end{multicols}
+
+\begin{table}[ht]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c|l|l|l|l|l|c|c|c|c|c|}
+        \hline
+        & \multicolumn{4}{c|}{Dataset} & \multicolumn{6}{c|}{Speed-up (compared to Naive (Sequential) solution)} \\
+        \hline
+        & \#users & \#posts & \#comments & \#likes & Naive (Sequential) & Naive (Parallel) & Pregel & MapReduce & OCL + Pregel & MapReduce + Pregel \\
+        \hline
+        1 & 80 & 554 & 640 & 6 & \textbf{1x} & {\color{red} 0.40x} & {\color{dkgreen} 10.30x} & {\color{dkgreen} 5.82x} & {\color{dkgreen} 9.40x} & {\color{dkgreen} 4.63x} \\
+        \hline
+        2 & 889 & 1064 & 118 & 24 & \textbf{1x} & {\color{red} 0.39x} & {\color{red} 0.36x} & {\color{red} 0.46x} & {\color{red} 0.44x} & {\color{red} 0.46x} \\
+        \hline
+        3 & 1845 & 2315 & 190 & 66 & \textbf{1x} & {\color{red} 0.51x} & {\color{red} 0.68x} & {\color{red} 0.85x} & {\color{red} 0.66x} & {\color{red} 0.71x} \\
+        \hline
+        4 & 2270 & 5056 & 204 & 129 & \textbf{1x} & {\color{red} 0.27x} & {\color{red} 0.35x} & {\color{dkgreen} 2.34x} & {\color{red} 0.15x} & {\color{dkgreen} 2.96x} \\
+        \hline
+        5 & 5518 & 9220 & 394 & 572 & \textbf{1x} & {\color{dkgreen} 4.25x} & {\color{dkgreen} 5.21x} & {\color{dkgreen} 4.17x} & {\color{dkgreen} 4.68x} & {\color{dkgreen} 4.03x} \\
+        \hline
+        6 & 10929 & 18872 & 595 & 1598 & \textbf{1x} & {\color{dkgreen} 4.68x} & {\color{dkgreen} 2.83x} & {\color{dkgreen} 2.39x} & {\color{dkgreen} 1.97x} & {\color{dkgreen} 3.91x} \\
+        \hline
+        7 & 18083 & 39212 & 781 & 4770 & \textbf{1x} & {\color{dkgreen} 4.07x} & {\color{dkgreen} 4.12x} & {\color{dkgreen} 4.58x} & {\color{dkgreen} 5.17x} & {\color{dkgreen} 3.27x} \\
+        \hline
+        8 & 37228 & 76735 & 1158 & 13374 & \textbf{1x} & {\color{dkgreen} 7.28x} & {\color{dkgreen} 9.52x} & {\color{dkgreen} 7.61x} & {\color{dkgreen} 9.66x} & {\color{dkgreen} 9.22x} \\
+        \hline
+    \end{tabular}}
+    \caption{Speed-up of 5 implementations based on different strategies for the TTC18 query}
+    \label{tab:results}
+\end{table}

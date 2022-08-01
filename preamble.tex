@@ -1,0 +1,99 @@
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{graphicx}
+% \usepackage{lipsum}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{babyblue}{rgb}{0.54, 0.81, 0.94}
+\definecolor{amaranth}{rgb}{0.9, 0.17, 0.31}
+\definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.93}
+\definecolor{atomictangerine}{rgb}{1.0, 0.6, 0.4}
+\definecolor{beaublue}{rgb}{0.74, 0.83, 0.9}
+\definecolor{dkviolet}{rgb}{0.9, 0.17, 0.31}
+\definecolor{dkgreen}{rgb}{0.0, 0.42, 0.24}
+\definecolor{ltblue}{rgb}{0.0, 0.75, 1.0}
+\definecolor{dkblue}{rgb}{0.2, 0.2, 0.6}
+\definecolor{dkred}{rgb}{0.8, 0.0, 0.0}
+\definecolor{byzantine}{rgb}{0.74, 0.2, 0.64}
+
+
+% --------------------------------------------------------
+\lstdefinestyle{giraph}{
+  language=Java,
+  columns=flexible,
+  basicstyle=\ttfamily\lst@ifdisplaystyle\normalsize\fi,
+  keywordstyle=\color{blue}, 
+  keywordstyle=[2]\color{purple}, 
+  commentstyle=\slshape\color{black!75!white},
+  keywords=[2]{compute},
+  numberstyle=\tiny,
+  numbers=left,
+  stepnumber=1,
+  numbersep=5pt,
+  tab=\rightarrowfill,
+  breaklines,
+  breakatwhitespace,
+  extendedchars=true,
+  inputencoding=utf8,
+  keepspaces,
+  tabsize=3,
+}
+
+% --------------------------------------------------------
+
+\lstdefinestyle{oclstyle}{
+%   frame=tb,
+  language=OCL,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  morekeywords={helper,def,query},
+  numbers=left,
+  xleftmargin=2em,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+%   frame=single,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  literate={->}{$\to$}{2} {--}{-$\,$-}{2} {<=}{$\le$}{2} {>=}{$\ge$}{2} {<>}{$<\,>$}{3}
+}
+\lstMakeShortInline[style=oclstyle]!
+
+% --------------------------------------------------------
+
+\lstdefinestyle{sparkstyle}{
+%   frame=tb,
+  language=scala,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+  showstringspaces=false,
+  morekeywords={isinstanceOf, compose},
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  xleftmargin=2em,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+%   frame=single,
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+}
+
+\lstMakeShortInline[style=sparkstyle]"
+
+\hyphenation{par-a-digms}

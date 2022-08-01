@@ -1,0 +1,33 @@
+\begin{multicols}{2}
+
+
+Social network vendors often provide specific development platforms, used by developers to
+build apps that extend the functionality of the social network. Some networks are associated
+with marketplaces where developers can publish such apps, and end-users can buy them. 
+Development platforms typically include APIs that allow analyzing and updating the social
+network graph. 
+
+As a running example for this paper, we consider a scenario where a vendor adds a LCDP to allow
+end-users (also called \emph{citizen developers} in the LCDP jargon) to implement their own apps.
+Such LCDP could include a `What you see is what you get editor' for the app user-interface, and a visual workflow for
+the behavioral part. In particular, the LCDPs would need to provide mechanisms, at the highest
+possible level of abstraction, to express queries and updates on the social graph.
+
+In Figure~\ref{fig:ttc_mm} we show the simple metamodel for the social graph that we will use in
+the paper. The metamodel has been originally proposed at the Transformation Tool Contest (TTC)
+2018~\cite{Garcia2018:TTC}, and used to express benchmarks for model query and transformation
+tools. In this metamodel, two main entities belong to a !SocialNetwork!. First, the !Post!s and
+the !Comment!s that represent the !Submission!s, and second, the !User!s. Each !Comment! is
+written by a !User!, and is necessarily attached to a !Submission! (either a !Post! or another
+!Comment!). Besides commenting, the !User!s can also like !Submission!s. 
+
+As an example, in this paper we focus on one particular query, also defined in TTC2018: the
+extraction of the three most debated posts in the social network. To measure how debated is the
+post, we associate it with a numeric score. The LCDP will have to provide simple and efficient
+means to define and compute this score. We suppose the vendor to include a declarative query
+language for expressing such computation on the social graph, and storing scores as a derived
+properties of the graph (i.e. new properties of the social graph that are computed on demand
+from other information in the graph). 
+
+\end{multicols}
+

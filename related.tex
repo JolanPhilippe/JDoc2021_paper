@@ -1,0 +1,40 @@
+
+\begin{multicols}{2}
+There exist attempts of using distributed strategies for running model management
+operations. They can be decomposed into three main categories: data-parallelism approach,
+where the full set of data is split among different processors which applies the same
+computation on it; task-parallelism where each processor runs a independent computations 
+that not necessary the same; and asynchronism where all data, and tasks are shared between 
+processors.
+
+\paragraph{Data-parallelism}
+This computation strategy has been used by Benelallam et al.~\cite{BenelallamGTC2015:SLE}
+for distributing model among computational cores to reduce cores to reduce computation time
+in the ATL model transformation engine. The MapReduce version of ATL makes independent
+transformations of sub-parts of the model by using a local “match-apply” function. They
+highlight the good impact of their strategy for data partitioning. Instead of randomly
+distributing the same number of elements among the processors, they use a strategy based
+on the connectivity of models. at resolving dependencies between map outputs. Graph-based
+approaches have been proposed. With this approach, the data is structured as a set of
+vertices, connected by edges. For instance~\cite{Krause2014:FASE} uses Pregel, a framework
+based on this approach, for computing models with a distributed strategy.
+
+\paragraph{Task-parallelism}
+In~\cite{MadaniKP2019:JOT}, Madani et al. use multi-threading for “select-based” operations
+in EOL, the OCL-like language of the Epsilon framework, for querying models. In
+\cite{TisiPC2013:MODELS}, Tisi et al. present a prototype of an automatic parallelization
+for the ATL transformation engine, based on task-parallelism. To do so, they just use a
+different thread for each transformation rule application, and each match, without taking
+into account concurrency concerns (e.g., race conditions).
+
+\paragraph{Asyncrhonism}
+LinTra~\cite{BurguenoTWV2015:STAF} is a Linda-based platform for model management and has
+several types of implementation. First, on a shared-memory architecture (i.e., a same shared
+memory between processors, typically multi-threading solutions), LinTra proposes parallel 
+transformations. Nonetheless, shared-memory architecture are fine for not too big models. 
+Indeed, since the memory is not distributed, a too big model could lead to a out-of-memory 
+errors. This phenomenon happens more concretely in an out-place transformation since two
+models are involved during the operation. The first prototype of distributed out-place
+transformations in LinTra, is presented in~\cite{BurguenoWV2016:INFSOF}.
+
+\end{multicols}

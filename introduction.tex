@@ -1,0 +1,39 @@
+\begin{multicols}{2}
+Model-Driven  Engineering  (MDE)  has  taken  an  importan place in the development of
+maintainable software due to its abstraction level. By abstracting concepts, the MDE
+paradigm reduces the cost and the needed level of expertise both at development and
+maintenance time~\cite{KarnaTK2009:OOPSLA}. Following this line, low-code engineering
+provides graphical interfaces for developing applications referred as low-code
+development platforms (LCDPs)~\cite{TisiMKDMDP2019:STAF}. The conception of applications
+is based on the manipulation of blocks, which respect a given semantic. They only
+have an access to these visual models that he can select, combine, or insert, usually
+following a drag-and-drop approach. At this point, LCDPs users do not have a look on
+the back-end implementation of these blocks. The fact is the possible implementations
+can be numerous, with their own benefits and drawbacks. The performance of these
+operations represent a field of study in the MDE community. More specifically,
+model-management in LCDPs has a significant need for automatic and transparent efficient
+and scalable operations, for manipulating, querying and analyzing models.
+
+We identify three main reasons for this need. First, LCDPs need to provide complex visual
+development environments with low response time for keeping a high level of comfort for 
+developers~\cite{MartinezTD2017:SCP}. Second, there is a need of manipulating large instance 
+models of data (e.g., Facebook graph is about a trillion of relationships
+\cite{ChingEKLM2015:OTE}). Finally, large number of users may want to manipulate the same 
+data at the same time. LCDPs must then be able to efficiently handle with a huge amount of 
+concurrent operations.
+
+To improve efficiency and scalability, recent research on model-management studied parallel
+and concurrent programming. These techniques range from implementing specific execution
+algorithms (e. g., RETE~\cite{Forgy1982:AI}) to compiling toward distributed programming
+models (e.g., MapReduce~\cite{DeanG2004:OSDI}). In this paper, we explore the performances
+of different distributed approaches in a context of querying a social network. Concretely,
+this paper proposes an extension of previous work published in~\cite{PhilippeCTS2020:MODELS},
+by providing performance evaluation of parallel queries.
+
+The rest of the paper is organized as follows. We motivate our work with an example in
+Section~\ref{sec:example}. Section~\ref{sec:related} presents related work from literature
+that is used for running a such example. In Section~\ref{sec:multistrategy}, we give a quick
+overview of our implementations based on distributed approaches. Their evaluation is given in
+Section~\ref{sec:evaluation}. We finally give concluding remarks in Section~\ref{sec:conclusion}
+\end{multicols}
+
